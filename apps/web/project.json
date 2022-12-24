@@ -19,6 +19,12 @@
         "production": {}
       }
     },
+    "build:image": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "docker build -t nx-docker/web . -f apps/web/Dockerfile"
+      }
+    },
     "serve": {
       "executor": "@nrwl/next:server",
       "defaultConfiguration": "development",
