@@ -12,6 +12,9 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  publicRuntimeConfig: {
+    apiUrl: process.env.API_URL,
+  },
 };
 
 module.exports = withNx(nextConfig);

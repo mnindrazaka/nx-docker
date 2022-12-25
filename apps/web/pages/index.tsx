@@ -1,5 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
+import getConfig from 'next/config';
+
+const { publicRuntimeConfig } = getConfig();
 
 type Biodata = {
   id: number;
@@ -10,7 +13,7 @@ export default function Home() {
   const [biodatas, setBiodatas] = React.useState<Biodata[]>([]);
 
   React.useEffect(() => {
-    fetch('http://localhost:3000')
+    fetch(publicRuntimeConfig.apiUrl)
       .then((res) => res.json())
       .then((res: Biodata[]) => setBiodatas(res));
   }, []);
