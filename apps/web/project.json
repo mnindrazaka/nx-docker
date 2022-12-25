@@ -10,7 +10,7 @@
       "defaultConfiguration": "production",
       "options": {
         "root": "apps/web",
-        "outputPath": "dist/apps/web"
+        "outputPath": "apps/web/dist"
       },
       "configurations": {
         "development": {
@@ -22,7 +22,8 @@
     "build:image": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "docker build -t nx-docker/web . -f apps/web/Dockerfile"
+        "cwd": "apps/web",
+        "command": "docker build -t nx-docker/web ."
       }
     },
     "serve": {

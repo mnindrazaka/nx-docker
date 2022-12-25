@@ -19,7 +19,7 @@ type Student struct {
 }
 
 func main() {
-	dsn := "root:((root))@tcp(127.0.0.1:3306)/biodata?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:roottoor@tcp(127.0.0.1:3306)/biodata?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatal(err)
