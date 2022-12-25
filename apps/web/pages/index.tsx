@@ -1,12 +1,17 @@
 import React from 'react';
 import Head from 'next/head';
 import getConfig from 'next/config';
+import { GetServerSideProps } from 'next';
 
 const { publicRuntimeConfig } = getConfig();
 
 type Biodata = {
   id: number;
   name: string;
+};
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  return { props: {} };
 };
 
 export default function Home() {
