@@ -7,8 +7,22 @@
     "build": {
       "executor": "@nx-go/nx-go:build",
       "options": {
-        "outputPath": "dist/apps/api",
+        "outputPath": "apps/api/dist/api",
         "main": "apps/api/main.go"
+      }
+    },
+    "build:linux": {
+      "executor": "@nx-go/nx-go:build",
+      "options": {
+        "outputPath": "apps/api/dist/api",
+        "main": "apps/api/main.go"
+      }
+    },
+    "build:image": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/api",
+        "command": "docker build -t nx-docker/api ."
       }
     },
     "serve": {
