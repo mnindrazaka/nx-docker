@@ -33,6 +33,7 @@ func main() {
 	dbUsername := os.Getenv("DB_USERNAME")
 	dbPassword := os.Getenv("DB_PASSWORD")
 	dbName := os.Getenv("DB_NAME")
+	port := os.Getenv("PORT")
 
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local", dbUsername, dbPassword, dbHost, dbPort, dbName)
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
@@ -60,5 +61,5 @@ func main() {
 		w.Header().Set("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT, OPTIONS")
 		w.Write(jsonData)
 	})
-	http.ListenAndServe(":3000", router)
+	http.ListenAndServe(":"+port, router)
 }
