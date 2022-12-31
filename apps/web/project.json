@@ -23,7 +23,7 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "apps/web",
-        "command": "docker build -t mnindrazaka/nx-docker/web ."
+        "command": "docker build -t mnindrazaka/nx-docker-web ."
       }
     },
     "serve": {
