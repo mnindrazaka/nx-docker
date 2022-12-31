@@ -22,7 +22,7 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "apps/api",
-        "command": "docker build -t nx-docker/api ."
+        "command": "docker build -t mnindrazaka/nx-docker/api ."
       }
     },
     "serve": {
