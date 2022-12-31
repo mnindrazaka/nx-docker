@@ -1,0 +1,40 @@
+services:
+  nx-docker-database:
+    image: mysql
+    container_name: nx-docker-database
+    ports:
+      - 3307:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - nx-docker
+    volumes:
+      - nx-docker:/var/lib/mysql
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      timeout: 20s
+      retries: 10
+  nx-docker-api:
+    image: mnindrazaka/nx-docker-api
+    container_name: nx-docker-api
+    ports:
+      - 3000:3000
+    depends_on:
+      nx-docker-database:
+        condition: service_healthy
+    networks:
+      - nx-docker
+  nx-docker-web:
+    image: mnindrazaka/nx-docker-web
+    container_name: nx-docker-web
+    ports:
+      - 4200:4200
+    networks:
+      - nx-docker
+networks:
+  nx-docker:
+    name: nx-docker
+volumes:
+  nx-docker:
+    name: nx-docker
+    external: true
