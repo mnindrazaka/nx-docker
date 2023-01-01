@@ -6,10 +6,12 @@ services:
       - 3307:3306
     environment:
       - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=biodata
     networks:
       - nx-docker
     volumes:
       - nx-docker:/var/lib/mysql
+      - ./biodata.sql:/docker-entrypoint-initdb.d/biodata.sql
     healthcheck:
       test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
       timeout: 20s
@@ -37,4 +39,3 @@ networks:
 volumes:
   nx-docker:
     name: nx-docker
-    external: true
